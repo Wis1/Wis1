@@ -2,6 +2,7 @@ package com.kodilla.testing.collection;
 
 import org.junit.jupiter.api.*;
 
+import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -43,8 +44,6 @@ public class CollectionTestSuite {
         System.out.println("Testing: empty list");
         //Then
         Assertions.assertEquals(exampleNumbers,emptyList);
-
-
     }
 
     @DisplayName(
@@ -55,23 +54,14 @@ public class CollectionTestSuite {
     void testOddNumbersExterminatorNormalList(){
 
         //Given
-        List<Integer> exampleNumbers= new LinkedList<>();
-        exampleNumbers.add(123);
-        exampleNumbers.add(124);
-        exampleNumbers.add(125);
-        exampleNumbers.add(128);
-        exampleNumbers.add(130);
+        Integer[] tabOfNumbers = new Integer[]{123,124,125,128,130,131,133,168};
+        List<Integer> exampleNumbers= Arrays.asList(tabOfNumbers);
         OddNumberExterminator numbers= new OddNumberExterminator();
         //When
-        List<Integer> evenNumbersList= new LinkedList<>();
-        evenNumbersList.add(124);
-        evenNumbersList.add(128);
-        evenNumbersList.add(130);
-        numbers.exterminate(exampleNumbers);
+        Integer[] tabOfEvenNumbers = new Integer[]{124,128,130,168};
+        List<Integer> evenNumbersList= Arrays.asList(tabOfEvenNumbers);
         System.out.println("Testing: normal list");
         //Then
         Assertions.assertEquals(evenNumbersList,numbers.exterminate(exampleNumbers));
-
-
     }
 }
