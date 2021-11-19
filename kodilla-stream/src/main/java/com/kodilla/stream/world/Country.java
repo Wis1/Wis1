@@ -2,7 +2,10 @@ package com.kodilla.stream.world;
 
 import java.math.BigDecimal;
 
-public interface Country {
+public class Country {
 
-    public BigDecimal getPeopleQuantity();
+    public BigDecimal getPeopleQuantity(){
+        BigDecimal peopleQuantityOfCountry=new BigDecimal(0);
+            return peopleQuantityOfCountry;
+    }
 }
