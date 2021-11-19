@@ -24,5 +24,7 @@ public class World {
                 .flatMap(continent->continent.getCountriesList().stream())
                 .map(Country:: getPeopleQuantity)
                 .reduce(BigDecimal.ZERO, (sum,current)->sum=sum.add(current));
+
     }
+
 }

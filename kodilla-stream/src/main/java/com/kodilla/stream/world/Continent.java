@@ -7,8 +7,9 @@ public final class Continent {
 
     private final List<Country> countriesList= new ArrayList<>();
 
-    public Continent(){
-        countriesList.add(new Country());
+
+    public void addCountry(Country country){
+        countriesList.add(country);
     }
 
     public List<Country> getCountriesList() {
