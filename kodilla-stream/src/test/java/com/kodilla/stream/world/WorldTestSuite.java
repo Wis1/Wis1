@@ -3,8 +3,6 @@ package com.kodilla.stream.world;
 import org.junit.jupiter.api.Test;
 
 import java.math.BigDecimal;
-import java.util.ArrayList;
-import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
@@ -17,9 +15,9 @@ public class WorldTestSuite {
         World world= new World();
         Continent continent= new Continent();
         world.addContinents(continent);
-        continent.addCountry(new Poland());
-        continent.addCountry(new Germany());
-        continent.addCountry(new France());
+        continent.addCountry(new Country("Poland", new BigDecimal("38000000")));
+        continent.addCountry(new Country("Germany", new BigDecimal("80000000")));
+        continent.addCountry(new Country("France", new BigDecimal("85000000")));
 
         //When
         BigDecimal totalPeopleQuantity= world.getPeopleQuantity();
