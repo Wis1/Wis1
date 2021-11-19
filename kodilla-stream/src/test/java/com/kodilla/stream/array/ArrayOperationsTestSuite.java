@@ -2,9 +2,7 @@ package com.kodilla.stream.array;
 
 import org.junit.jupiter.api.Test;
 
-import java.util.Arrays;
 
-import static com.kodilla.stream.array.ArrayOperations.getAverage;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class ArrayOperationsTestSuite {
@@ -20,11 +18,20 @@ public class ArrayOperationsTestSuite {
         numbers[4]=5;
         numbers[5]=6;
         numbers[6]=7;
-
-
         //When
         double averageResult=ArrayOperations.getAverage(numbers);
         //Then
-        assertEquals(4.0, averageResult);
+        assertEquals(3.0, averageResult);
+    }
+    @Test
+    void testGetAverage2(){
+        //Given
+        int[]numbers= new int[0];
+
+        //When
+        double averageResult=ArrayOperations.getAverage(numbers);
+
+        //Then
+        assertEquals(0, averageResult);
     }
 }
