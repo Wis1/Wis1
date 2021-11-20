@@ -21,7 +21,7 @@ public class ArrayOperationsTestSuite {
         //When
         double averageResult=ArrayOperations.getAverage(numbers);
         //Then
-        assertEquals(3.0, averageResult);
+        assertEquals(4.0, averageResult);
     }
     @Test
     void testGetAverage2(){
