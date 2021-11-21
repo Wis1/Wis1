@@ -13,6 +13,7 @@ import java.util.stream.IntStream;
 
 import static java.time.Period.ZERO;
 import static java.time.Period.between;
+import static java.time.temporal.ChronoUnit.DAYS;
 import static java.util.stream.Collectors.toList;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
@@ -154,17 +155,25 @@ public class BoardTestSuite {
         Board project= prepareTestData();
 
         //When
+        LocalDate.now().minusDays(10).compareTo(LocalDate.now());
         List<TaskList> inProgressTasks = new ArrayList<>();
         inProgressTasks.add(new TaskList("In progress"));
-        long inititalValue=0;
-        Long averageTime=project.getTaskLists().stream()
+        long initialValue=0;
+        long timeForAllTasks=project.getTaskLists().stream()
                 .filter(inProgressTasks::contains)
                 .flatMap(tl->tl.getTasks().stream())
-                .map(n-> Duration.between(n.getCreated(), LocalDate.now()))
-                .map(n->n.toDays())
-                .reduce(inititalValue, (sum, current) -> sum = sum+(current));
+                .map(n->DAYS.between(n.getCreated(), LocalDate.now()))
+                .reduce(initialValue, (sum, current) -> sum = sum+(current));
+        long quantityTasks=project.getTaskLists().stream()
+                .filter(inProgressTasks::contains)
+                .flatMap(tl->tl.getTasks().stream())
+                        .count();
+        double averageTimePerTask=(double) timeForAllTasks/quantityTasks;
+
 
         //Then
-        assertEquals(30, averageTime);
+        assertEquals(30, timeForAllTasks);
+        assertEquals(3, quantityTasks);
+        assertEquals(10.0,averageTimePerTask);
     }
 }
