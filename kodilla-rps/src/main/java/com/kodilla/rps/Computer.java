@@ -4,7 +4,6 @@ import java.util.Random;
 
 public class Computer {
     String rpsString;
-    int rpsInt;
 
     public String getRpsString() {
         return rpsString;
@@ -12,6 +11,7 @@ public class Computer {
 
     Random generator = new Random();
     public String computerMove() {
+        int rpsInt;
         rpsInt = generator.nextInt(2) + 1;
         if (rpsInt == 1)
             rpsString = "1";

@@ -3,10 +3,10 @@ package com.kodilla.rps;
 import java.util.Scanner;
 
 public class Game {
-    String name, key, computerKey;
-    boolean whoWon, end=false;;
-    int playersScore=0, computerScore=0;;
-    int numbersOfRoundWon;
+    private String name, key, computerKey;
+    private boolean whoWon, end=false;;
+    private int playersScore=0, computerScore=0;;
+    private int numbersOfRoundWon;
     Computer computer= new Computer();
     Scanner keyboard= new Scanner(System.in);
     Player player= new Player(name, numbersOfRoundWon);
@@ -68,6 +68,7 @@ public class Game {
                     System.out.println("Use keys: 1,2,3,x or n.");
 
             } while (!end);
+            printResult();
     }
 
     public void printResult(){

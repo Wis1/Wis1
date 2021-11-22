@@ -1,10 +1,10 @@
 package com.kodilla.rps;
 
 public class GameLogic {
-    String keyPlayer;
-    String moveComputer;
-    boolean wonPlayer;
-    boolean tie;
+    private String keyPlayer;
+    private String moveComputer;
+    private boolean wonPlayer;
+    private boolean tie;
 
     public GameLogic(String keyPlayer, String moveComputer) {
         this.keyPlayer = keyPlayer;
