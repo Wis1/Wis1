@@ -1,6 +1,8 @@
 package com.kodilla.good.patterns.challenges;
 
+import java.io.Serializable;
 import java.util.*;
+import java.util.stream.Collectors;
 
 class MovieStore {
 
@@ -28,9 +30,9 @@ class MovieStore {
 class Application{
     public static void main(String[]args) {
         MovieStore movieStore= new MovieStore();
-        movieStore.getMovies().values().stream()
+        String collect = movieStore.getMovies().values().stream()
                 .flatMap(Collection::stream)
-                .map(title->title+"!")
-                .forEach(System.out::print);
+                .collect(Collectors.joining("!"));
+        System.out.println(collect);
     }
 }
