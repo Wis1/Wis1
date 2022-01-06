@@ -27,7 +27,7 @@ class MovieStore {
         return booksTitlesWithTranslations;
     }
 }
-class Application{
+class App{
     public static void main(String[]args) {
         MovieStore movieStore= new MovieStore();
         String collect = movieStore.getMovies().values().stream()
