@@ -6,11 +6,11 @@ import java.util.List;
 public class HealthyShop implements OrderProcessing{
 
     @Override
-    public boolean process(String nameOfProduct, int quantity, String unit) {
+    public boolean process(Product product) {
         List<String> fruit= new LinkedList<>();
         fruit.add("apple");
         fruit.add("banana");
 
-        return fruit.contains(nameOfProduct);
+        return fruit.contains(product.getNameOfProduct());
     }
 }

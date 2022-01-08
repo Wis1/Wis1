@@ -15,13 +15,13 @@ public class ExtraFoodShop implements OrderProcessing{
     
     
     @Override
-    public boolean process(String nameOfProduct, int quantity, String unit) {
+    public boolean process(Product product) {
         List<Integer> value;
         value = productsOfShop().entrySet().stream()
-                .filter(entry -> entry.getKey().equals(nameOfProduct))
+                .filter(entry -> entry.getKey().equals(product.getNameOfProduct()))
                 .map(Map.Entry::getValue)
                 .collect(Collectors.toList());
-        return quantity <= value.get(0);
+        return product.getQuantity() <= value.get(0);
 
     }
 }
