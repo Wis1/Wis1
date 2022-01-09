@@ -10,6 +10,7 @@ public class ExtraFoodShop implements OrderProcessing{
     private Map<String, Integer> productsOfShop(){
         Map<String, Integer> productsOfShop = new HashMap<>();
         productsOfShop.put("apple", 500);
+        productsOfShop.put("banana", 139);
         return productsOfShop;
     }
     

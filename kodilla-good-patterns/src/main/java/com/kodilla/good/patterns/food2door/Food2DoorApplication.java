@@ -1,25 +1,22 @@
 package com.kodilla.good.patterns.food2door;
 
+import java.util.stream.Collectors;
+
 public class Food2DoorApplication {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IndexOutOfBoundsException{
 
                 ExtraFoodShop extraFoodShop = new ExtraFoodShop();
-                if (extraFoodShop.process(ListOfProducts.listOfProducts().get(0))) {
-                    System.out.println("Your order is complete \n"+ListOfProducts.listOfProducts().get(0).getNameOfProduct()+": "+
-                            ListOfProducts.listOfProducts().get(0).getQuantity()+" "+
-                            ListOfProducts.listOfProducts().get(0).getUnit());
-                } else {
-                    System.out.println("You must searching another shop");
-                }
-        System.out.println();
 
-                HealthyShop healthyShop = new HealthyShop();
-                if (healthyShop.process(ListOfProducts.listOfProducts().get(1))) {
-                    System.out.println("Your order is complete \n"+ListOfProducts.listOfProducts().get(1).getNameOfProduct()+": "+
-                            ListOfProducts.listOfProducts().get(1).getQuantity()+" "+
-                            ListOfProducts.listOfProducts().get(1).getUnit());
-                } else {
-                    System.out.println("You must searching another shop");
-                }
+                for(Product product: ListOfProducts.listOfProducts()){
+                   try{ if (extraFoodShop.process(product)) {
+                        System.out.println("Your order is complete \n"+product.getNameOfProduct()+": "+
+                                product.getQuantity()+" "+
+                                product.getUnit());
+                    } else {
+                        System.out.println("You must searching another shop");
+                    }}catch (IndexOutOfBoundsException e){
+                       System.out.println("Error "+ e);
+                   };
+        }
     }
 }
