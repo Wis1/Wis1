@@ -13,16 +13,18 @@ public class ExtraFoodShop implements OrderProcessing{
         productsOfShop.put("banana", 139);
         return productsOfShop;
     }
-    
-    
+
     @Override
     public boolean process(Product product) {
         List<Integer> value;
         value = productsOfShop().entrySet().stream()
-                .filter(entry -> entry.getKey().equals(product.getNameOfProduct()))
+                .filter(entry -> entry.getKey().contains(product.getNameOfProduct()))
                 .map(Map.Entry::getValue)
                 .collect(Collectors.toList());
-        return product.getQuantity() <= value.get(0);
 
+        if(value.size()>0) {
+            return product.getQuantity() <= value.get(0);
+        }
+        return false;
     }
 }
