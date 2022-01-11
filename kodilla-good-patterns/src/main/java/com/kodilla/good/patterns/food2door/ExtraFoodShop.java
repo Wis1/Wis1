@@ -20,11 +20,9 @@ public class ExtraFoodShop implements OrderProcessing{
         value = productsOfShop().entrySet().stream()
                 .filter(entry -> entry.getKey().contains(product.getNameOfProduct()))
                 .map(Map.Entry::getValue)
+                .filter(quantity->quantity>= product.getQuantity())
                 .collect(Collectors.toList());
 
-        if(value.size()>0) {
-            return product.getQuantity() <= value.get(0);
-        }
-        return false;
+        return value.size() > 0;
     }
 }
