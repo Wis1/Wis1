@@ -7,8 +7,10 @@ import java.time.LocalDate;
 import java.time.Period;
 import java.time.temporal.TemporalUnit;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
+import java.util.stream.DoubleStream;
 import java.util.stream.IntStream;
 
 import static java.time.Period.ZERO;
@@ -175,5 +177,27 @@ public class BoardTestSuite {
         assertEquals(30, timeForAllTasks);
         assertEquals(3, quantityTasks);
         assertEquals(10.0,averageTimePerTask);
+    }
+    @Test
+    void testAddTaskListAverageWorkingOnTaskWithDoubleStream() {
+        //Given
+        Board project = prepareTestData();
+        //When
+        List<TaskList> inProgressTasks = new ArrayList<>();
+        inProgressTasks.add(new TaskList("In progress"));
+        List<TaskList> taskLists= project.getTaskLists();
+
+        double averageDaysInProgressTask= project.getTaskLists().stream()
+                .filter(x-> inProgressTasks.contains(x))
+                .flatMap(n->n.getTasks().stream())
+                .map(n->DAYS.between(n.getCreated(), LocalDate.now()))
+                .mapToInt(i->i.intValue())
+                .average()
+                .orElse(0);
+        //Then
+        assertEquals(10.0, averageDaysInProgressTask);
+
+
+
     }
 }
