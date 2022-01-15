@@ -15,7 +15,7 @@ public class BoardConfig {
 
     @Bean
     public Board getBoard(){
-        return new Board(taskList);
+        return new Board(list1(),list2(),list3());
     }
 
     @Bean(name="list1")
@@ -24,13 +24,13 @@ public class BoardConfig {
 
         return new TaskList();
     }
-    @Bean
+    @Bean(name="list2")
     @Scope("prototype")
     public TaskList list2(){
 
         return new TaskList();
     }
-    @Bean
+    @Bean(name="list3")
     @Scope("prototype")
     public TaskList list3(){
 

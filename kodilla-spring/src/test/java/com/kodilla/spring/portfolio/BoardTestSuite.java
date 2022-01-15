@@ -1,6 +1,7 @@
 package com.kodilla.spring.portfolio;
 
 import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
@@ -11,7 +12,7 @@ import java.util.List;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 
-@SpringBootTest
+
 public class BoardTestSuite {
 
     @Test
@@ -34,7 +35,6 @@ public class BoardTestSuite {
         //Then
         assertEquals(toCheckList, toDoList);
         assertEquals(toCheckList, doneList);
-        assertEquals(toCheckList, inProgressList)
-        ;
+        assertEquals(toCheckList, inProgressList);
     }
 }
