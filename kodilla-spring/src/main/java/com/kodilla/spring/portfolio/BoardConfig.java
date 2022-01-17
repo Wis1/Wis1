@@ -1,4 +1,6 @@
 package com.kodilla.spring.portfolio;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
@@ -22,6 +24,15 @@ public class BoardConfig {
     @Scope("prototype")
     public TaskList list3(){
         return new TaskList();
+    }
+
+    @Autowired
+    @Qualifier("board")
+    private Board board;
+
+    @Bean(name="board")
+    public Board getBoard() {
+        return new Board(board.doneList, board.toDoList, board.inProgressList);
     }
 
 }
