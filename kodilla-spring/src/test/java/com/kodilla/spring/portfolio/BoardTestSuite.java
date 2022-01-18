@@ -18,9 +18,9 @@ public class BoardTestSuite {
         //Given
         ApplicationContext context = new AnnotationConfigApplicationContext("com.kodilla.spring");
         BoardConfig boardConfig= context.getBean(BoardConfig.class);
-        List<String> toDoList=boardConfig.list1().getTasks();
-        List<String> doneList= boardConfig.list2().getTasks();
-        List<String> inProgressList=boardConfig.list3().getTasks();
+        List<String> toDoList=boardConfig.setBoard().toDoList.getTasks();
+        List<String> doneList= boardConfig.setBoard().doneList.getTasks();
+        List<String> inProgressList=boardConfig.setBoard().inProgressList.getTasks();
 
         List<String> toCheckList= new ArrayList<>();
         toCheckList.add("check");
