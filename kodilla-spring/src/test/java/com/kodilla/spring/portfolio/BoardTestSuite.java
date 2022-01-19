@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 @SpringBootTest
 public class BoardTestSuite {
@@ -17,10 +18,11 @@ public class BoardTestSuite {
     void testTaskAdd(){
         //Given
         ApplicationContext context = new AnnotationConfigApplicationContext("com.kodilla.spring");
-        BoardConfig boardConfig= context.getBean(BoardConfig.class);
-        List<String> toDoList=boardConfig.setBoard().toDoList.getTasks();
-        List<String> doneList= boardConfig.setBoard().doneList.getTasks();
-        List<String> inProgressList=boardConfig.setBoard().inProgressList.getTasks();
+        Board board= context.getBean(Board.class);
+        TaskList list=board.getToDoList();
+        List<String> toDoList=board.getToDoList().getTasks();
+        List<String> doneList= board.getDoneList().getTasks();
+        List<String> inProgressList=board.getInProgressList().getTasks();
 
         List<String> toCheckList= new ArrayList<>();
         toCheckList.add("check");
@@ -31,6 +33,7 @@ public class BoardTestSuite {
         inProgressList.add("check");
 
         //Then
+        assertNotNull(list);
         assertEquals(toCheckList, toDoList);
         assertEquals(toCheckList, doneList);
         assertEquals(toCheckList, inProgressList);

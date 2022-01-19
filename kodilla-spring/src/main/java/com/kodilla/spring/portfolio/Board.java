@@ -12,5 +12,15 @@ public class Board {
         this.inProgressList = inProgressList;
     }
 
+    public TaskList getToDoList() {
+        return toDoList;
+    }
 
+    public TaskList getDoneList() {
+        return doneList;
+    }
+
+    public TaskList getInProgressList() {
+        return inProgressList;
+    }
 }

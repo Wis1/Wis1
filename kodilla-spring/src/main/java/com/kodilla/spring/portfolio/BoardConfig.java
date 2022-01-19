@@ -1,17 +1,51 @@
 package com.kodilla.spring.portfolio;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Lazy;
+import org.springframework.context.annotation.Scope;
 
-@Component
+@Configuration
 public class BoardConfig {
 
-    TaskList taskList1= new TaskList();
-    TaskList taskList2= new TaskList();
-    TaskList taskList3= new TaskList();
-
+    @Lazy
     @Autowired
+    @Qualifier("list1")
+    TaskList taskList1;
+
+    @Lazy
+    @Autowired
+    @Qualifier("list2")
+    TaskList taskList2;
+
+    @Lazy
+    @Autowired
+    @Qualifier("list3")
+    TaskList taskList3;
+
+    @Bean(name="list1")
+    @Scope("prototype")
+    public TaskList list1(){
+        return new TaskList();
+    }
+
+    @Bean(name="list2")
+    @Scope("prototype")
+    public TaskList list2(){
+        return new TaskList();
+    }
+
+    @Bean(name="list3")
+    @Scope("prototype")
+    public TaskList list3(){
+        return new TaskList();
+    }
+
+    @Bean
     public Board setBoard() {
-        return new Board(taskList1,taskList2, taskList3);
+        Board board = new Board(taskList1, taskList2, taskList3);
+        return board;
     }
 
 }
