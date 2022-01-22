@@ -7,19 +7,22 @@ public class PaintingTask implements Task{
     String whatToPaint;
     boolean executed;
 
-    public PaintingTask(String taskName, String color, String whatToPaint, boolean executed) {
+    public PaintingTask(String taskName, String color, String whatToPaint) {
         this.taskName = taskName;
         this.color = color;
         this.whatToPaint = whatToPaint;
-        this.executed= executed;
     }
 
     @Override
     public void executeTask() {
-        if(executed)
+        if(whatToPaint.equals("")){
+            executed=true;
             System.out.println("Painting task is executed.");
-        else
+        }
+        else {
+            executed=false;
             System.out.println("Painting task is executing.");
+        }
     }
 
     @Override
