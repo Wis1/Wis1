@@ -12,7 +12,7 @@ public class TestLoopAndConditionalBreakpoints {
         long sum=0;
         //When
         for(int n=0;n<1000;n++){
-            sum+=0;
+            sum+=n;
             System.out.println("("+n+") Sum equals: "+sum);
         }
         //Then

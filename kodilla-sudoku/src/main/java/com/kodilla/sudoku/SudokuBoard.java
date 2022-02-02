@@ -14,16 +14,25 @@ public class SudokuBoard {
             values[i]= new SudokuElement[9];
         }
     }
+    public SudokuElement getElement(int x, int y){
+        return values[x][y];
+    }
+    public void setElement(SudokuElement value, int x, int y){
+        values[x][y]=value;
+    }
 
     public String toString() {
         String result = "";
+        for (int y = MIN_INDEX; y <= MAX_INDEX; y++)
+            result+=" _";
+        result += "\n";
         for (int y = MIN_INDEX; y <= MAX_INDEX; y++) {
             result += "|";
             for (int x = MIN_INDEX; x <= MAX_INDEX; x++) {
                 if (values[x][y] == null) {
-                    result += "  ";
+                    result += "_";
                 } else {
-                    System.out.println("cokolwiek");
+                    result+=values[x][y].getValue();
                 }
                 result += "|";
             }

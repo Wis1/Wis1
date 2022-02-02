@@ -14,7 +14,7 @@ public class SudokuGame {
         }else if(answer.equalsIgnoreCase("no")){
             return false;
         }else{
-            System.out.println("You must writ: yes or no");
+            System.out.println("You must write: yes or no");
         }
         return false;
     }

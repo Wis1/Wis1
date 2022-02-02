@@ -10,9 +10,15 @@ public class SudokuElement {
     private int value;
     List<Integer>possibleValues=new ArrayList<>();
 
-    public SudokuElement(int value, List<Integer> possibleValues) {
-        this.value = value;
-        this.possibleValues = possibleValues;
+    public SudokuElement(int value) {
+        if( value<0||value>10||value==EMPTY){
+            throw new IllegalStateException("Element of Sudoku should be numbers 1 to 9 "+value);
+        }else {
+            this.value = value;
+        }
+    }
+
+    public SudokuElement(List<Integer> possibleValues) {
         possibleValues.add(1);
         possibleValues.add(2);
         possibleValues.add(3);
@@ -22,25 +28,23 @@ public class SudokuElement {
         possibleValues.add(7);
         possibleValues.add(8);
         possibleValues.add(9);
+        this.possibleValues = possibleValues;
     }
 
-    public SudokuElement() {
-        if( value<0&&value>10||value!=EMPTY){
-            throw new IllegalStateException("Element of Sudoku should be numbers 1 to 9 ");
-        }
-        getPossibleValuesWithoutNumbers(value);
+    public SudokuElement(){
+
     }
 
     public int getValue() {
-        return value;
+        return this.value;
     }
 
     public List<Integer> getPossibleValues(){
 
         return possibleValues;
     }
-    public List<Integer> getPossibleValuesWithoutNumbers (int value){
-        getPossibleValues().remove(value-1);
+    public List<Integer> getPossibleValuesWithoutNumbers (int number){
+        getPossibleValues().remove(number-1);
         return getPossibleValues();
     }
 
