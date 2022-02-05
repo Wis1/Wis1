@@ -82,6 +82,7 @@ public class Item {
 
     @Column(name="VALUE")
     public BigDecimal getValue() {
+        value= price.multiply(BigDecimal.valueOf(quantity));
         return value;
     }
 

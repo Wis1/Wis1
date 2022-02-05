@@ -16,6 +16,8 @@ public class InvoiceDaoTestSuite {
 
     @Autowired
     private InvoiceDao invoiceDao;
+    private ItemDao itemDao;
+    private ProductDao productDao;
 
     @Test
     void testInvoiceDaoSave(){
@@ -33,6 +35,9 @@ public class InvoiceDaoTestSuite {
         invoice.getItems().add(item1);
         invoice.getItems().add(item2);
         invoice.getItems().add(item3);
+        item1.setInvoice(invoice);
+        item2.setInvoice(invoice);
+        item3.setInvoice(invoice);
 
         //When
         invoiceDao.save(invoice);
@@ -41,11 +46,14 @@ public class InvoiceDaoTestSuite {
         //Then
         assertNotEquals(0, invoiceId);
 
-//        try{
-//            invoiceDao.deleteById(invoiceId);
-//        }catch (Exception e){
-//            System.out.println(e);
-//        }
+        try{
+            invoiceDao.deleteById(invoiceId);
+            productDao.deleteAll();
+            itemDao.deleteAll();
+
+        }catch (Exception e){
+            System.out.println(e);
+        }
 
     }
 }
