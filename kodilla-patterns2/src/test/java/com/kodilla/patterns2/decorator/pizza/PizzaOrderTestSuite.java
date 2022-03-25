@@ -52,7 +52,7 @@ public class PizzaOrderTestSuite {
     }
 
     @Test
-    void testBakonColagetCost(){
+    void testBaconColaGetCost(){
         //Given
         PizzaOrder thePizza= new BasicPizzaOrder();
         thePizza= new BaconDecorator(thePizza);
@@ -61,5 +61,17 @@ public class PizzaOrderTestSuite {
         BigDecimal theCost= thePizza.getCost();
         //Then
         assertEquals(new BigDecimal(26), theCost);
+    }
+
+    @Test
+    void testBaconColaGetDescription(){
+        //Given
+        PizzaOrder thePizza= new BasicPizzaOrder();
+        thePizza= new BaconDecorator(thePizza);
+        thePizza= new ColaDecorator(thePizza);
+        //When
+        String description= thePizza.getDescription();
+        //Then
+        assertEquals("Pizza + bacon + Coca Cola", description);
     }
 }
