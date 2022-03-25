@@ -8,11 +8,15 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-
+@NamedQueries({
 @NamedQuery(
         name = "Employee.searchEmployeeByLastname",
         query = "FROM Employee WHERE lastname= :LASTNAME"
-)
+),
+@NamedQuery(
+        name = "Employee.searchEmployeeByAnyPartOfName",
+        query = "FROM Employee WHERE lastname LIKE: NAME_FRAGMENT"
+)})
 @Entity
     @Table(name = "EMPLOYEES")
     public class Employee {

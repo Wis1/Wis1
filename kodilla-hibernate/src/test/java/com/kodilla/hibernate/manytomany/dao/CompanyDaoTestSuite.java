@@ -104,12 +104,9 @@ class CompanyDaoTestSuite {
         //CleanUp
         try {
             companyDao.deleteAll();
-            employeeDao.deleteAll();
+            employeeDao.deleteById(johnSmith.getId());
         } catch (Exception e) {
             //do nothing
         }
-
-
-
     }
 }
