@@ -15,7 +15,7 @@ import java.util.List;
 ),
 @NamedQuery(
         name = "Employee.searchEmployeeByAnyPartOfName",
-        query = "FROM Employee WHERE lastname LIKE: NAME_FRAGMENT"
+        query = "FROM Employee WHERE lastname LIKE CONCAT('%',:NAME_FRAGMENT,'%')"
 )})
 @Entity
     @Table(name = "EMPLOYEES")

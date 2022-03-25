@@ -21,11 +21,11 @@ public class EmployeeFacade {
 
 
     public List<Company> findCompaniesByNameFragment(String fragment) {
-        return companyDao.searchCompanyByAnyPartOfName("%"+fragment+"%");
+        return companyDao.searchCompanyByAnyPartOfName(fragment);
     }
 
     public List<Employee> findEmployeesByNameFragment(String fragment) {
-        return employeeDao.searchEmployeeByAnyPartOfName("%"+fragment+"%");
+        return employeeDao.searchEmployeeByAnyPartOfName(fragment);
     }
 
 
