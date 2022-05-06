@@ -46,8 +46,7 @@ public class StoredProcTestSuite {
 
         //When
         String sqlProcedureCal= "call UpdateBestsellers()";
-        Statement statement1= dbManager.getConnection().createStatement();
-        statement1.execute(sqlProcedureCal);
+        statement.execute(sqlProcedureCal);
 
         //Then
         String sqlCheckTable = "select count(*) as HOW_MANY from BOOKS where BESTSELLER = false";
@@ -60,7 +59,6 @@ public class StoredProcTestSuite {
         assertEquals(4, howMany);
         rs.close();
         statement.close();
-        statement1.close();
     }
 
 }
