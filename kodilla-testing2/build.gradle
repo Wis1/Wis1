@@ -10,7 +10,8 @@ repositories {
 }
 
 dependencies {
-    implementation 'ru.stqa.selenium:webdriver-junit5-archetype:4.5'
+    implementation group: 'org.seleniumhq.selenium', name: 'selenium-java', version: '3.141.59'
+
     testImplementation 'org.junit.jupiter:junit-jupiter-api:5.7.0'
     testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.7.0'
 }
