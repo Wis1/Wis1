@@ -126,8 +126,11 @@ public class CrudAppTestSuite {
                 .filter(anyForm ->
                         anyForm.findElement(By.xpath(".//p[@class=\"datatable__field-value\"]"))
                                 .getText().equals(taskName))
-                .filter(button->button.findElement(By.xpath(".//button[contains(@class, \"datatable__button\")]")).getText().equals("Delete"))
-                .forEach(WebElement::click);
+                .forEach(button -> {
+                    WebElement buttonDelete = button.findElement(By.xpath(".//button[@data-task-delete-button=\"\"]"));
+                    buttonDelete.click();
+                });
+
         Thread.sleep(2000);
     }
 }
