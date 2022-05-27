@@ -14,6 +14,7 @@ repositories {
 
 dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-web'
+    implementation 'ru.stqa.selenium:webdriver-junit5-archetype:4.5'
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
 }
 
