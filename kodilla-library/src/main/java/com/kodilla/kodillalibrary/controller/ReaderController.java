@@ -5,6 +5,7 @@ import com.kodilla.kodillalibrary.domain.dto.ReaderDto;
 import com.kodilla.kodillalibrary.mapper.ReaderMapper;
 import com.kodilla.kodillalibrary.service.DbReadersService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -25,19 +26,22 @@ public class ReaderController {
 
     }
 
-    @PostMapping
+    @PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE)
     public void addReader(@RequestBody ReaderDto readerDto){
+        Reader reader= readerMapper.mapToReader(readerDto);
+        dbReadersService.saveReader(reader);
+    }
+
+    @DeleteMapping(value = "{userId}")
+    public void deleteReader(@PathVariable Integer userId){
+        dbReadersService.deleteReader(userId);
 
     }
 
-    @DeleteMapping
-    public void deleteReader(@PathVariable Long userId){
-
-    }
-
-    @PutMapping
+    @PutMapping(consumes = MediaType.APPLICATION_JSON_VALUE)
     public void editReader(@RequestBody ReaderDto readerDto){
-
+        Reader reader= readerMapper.mapToReader(readerDto);
+        dbReadersService.saveReader(reader);
     }
 
 }

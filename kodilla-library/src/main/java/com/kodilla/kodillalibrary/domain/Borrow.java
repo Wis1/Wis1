@@ -4,6 +4,7 @@ import com.sun.istack.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import javax.persistence.*;
 import java.time.LocalDate;
@@ -12,16 +13,20 @@ import java.time.LocalDate;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-public class Borrows {
+@Setter
+public class Borrow {
 
     @Id
-    @Column
-    private Long idOfCopiesBook;
+    @GeneratedValue
+    private Long id;
+
+    @OneToOne(
+            targetEntity = CopiesBook.class
+    )
+    private CopiesBook copieBook;
 
     @ManyToOne
-    @Column
-    @NotNull
-    @JoinColumn(name = "raaderId")
+    @JoinColumn(name = "reader")
     private Reader reader;
 
     @Column
@@ -30,4 +35,11 @@ public class Borrows {
 
     @Column
     private LocalDate dateOfReturn;
+
+    public Borrow(CopiesBook copieBook, Reader reader, LocalDate dateOfBorrow, LocalDate dateOfReturn) {
+        this.copieBook = copieBook;
+        this.reader = reader;
+        this.dateOfBorrow = dateOfBorrow;
+        this.dateOfReturn = dateOfReturn;
+    }
 }

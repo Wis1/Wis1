@@ -1,5 +1,6 @@
 package com.kodilla.kodillalibrary.domain;
 
+import com.sun.istack.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.Getter;
@@ -21,11 +22,14 @@ public class Book {
     private Long Id;
 
     @Column
+    @NotNull
     private String title;
 
     @Column
+    @NotNull
     private String author;
 
     @Column
+    @NotNull
     private Integer releaseDate;
 }
