@@ -38,7 +38,7 @@ public class DbBorrowsService {
     public CopiesBook returnCopiesBook(Long borrowId) throws BorrowNotFoundException{
         Borrow borrow= borrowRepository.findById(borrowId).orElseThrow(BorrowNotFoundException::new);
         CopiesBook copiesBook=borrow.getCopieBook();
-        copiesBook.setStatus("avalaible");
+        copiesBook.setStatus("available");
         return copiesBook;
     }
 

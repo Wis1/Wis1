@@ -25,10 +25,14 @@ public class CopiesBook {
 
     @ManyToOne
     @JoinColumn(name="book")
+    @NotNull
     private Book book;
 
     @Column
     private String status;
 
-
+    public CopiesBook(Book book, String status) {
+        this.book = book;
+        this.status = status;
+    }
 }
