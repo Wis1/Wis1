@@ -2,14 +2,12 @@ package com.kodilla.kodillalibrary.domain;
 
 import com.sun.istack.NotNull;
 import lombok.AllArgsConstructor;
-import lombok.Data;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Getter
 @NoArgsConstructor
@@ -32,4 +30,19 @@ public class Book {
     @Column
     @NotNull
     private Integer releaseDate;
+
+    @OneToMany(
+                targetEntity = CopiesBook.class,
+                mappedBy = "book",
+                cascade = CascadeType.MERGE,
+                fetch = FetchType.LAZY
+    )
+    private List<CopiesBook> copiesBooks= new ArrayList<>();
+
+    public Book(Long id, String title, String author, Integer releaseDate) {
+        Id = id;
+        this.title = title;
+        this.author = author;
+        this.releaseDate = releaseDate;
+    }
 }

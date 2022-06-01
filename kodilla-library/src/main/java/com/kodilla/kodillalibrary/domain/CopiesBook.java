@@ -23,9 +23,9 @@ public class CopiesBook {
     @JoinColumn(name = "borrow")
     private Borrow borrow;
 
-    @Column
-    @NotNull
-    private Long idOfTitle;
+    @ManyToOne
+    @JoinColumn(name="book")
+    private Book book;
 
     @Column
     private String status;
